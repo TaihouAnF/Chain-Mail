@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class Centipede : MonoBehaviour
 
     public LayerMask CollisionMask;
     public BoxCollider2D HomeBound;
+    public Barrier BarrierPrefab;
 
     private void Start()
     {
@@ -50,6 +52,25 @@ public class Centipede : MonoBehaviour
         }
     }
 
+    public void RemoveSection(CentipedeSection section)
+    {
+        Vector3 pos = GridPosition(section.transform.position);
+        Instantiate(BarrierPrefab, pos, Quaternion.identity);
+
+        if (section.Ahead != null)
+        {
+            section.Ahead.Behind = null;
+        }
+        if(section.Behind != null)
+        {
+            section.Behind.Ahead = null;
+            section.Behind.SRenderer.sprite = HeadSprite;
+            section.Behind.UpdateHeadSection();
+        }
+
+        sections.Remove(section);
+        Destroy(section.gameObject);
+    }
     private CentipedeSection GetSectionAt(int index)
     {
         if(index >= 0 && index < sections.Count)

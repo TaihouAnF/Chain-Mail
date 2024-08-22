@@ -51,4 +51,6 @@ MonoBehaviour:
   CentiSpeed: 5
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
+  HomeBound: {fileID: 0}
+  BarrierPrefab: {fileID: -4236088132779124694, guid: 52a39df2048ebd34fa4374c489e5cc30, type: 3}

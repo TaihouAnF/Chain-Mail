@@ -39,7 +39,7 @@ public class CentipedeSection : MonoBehaviour
         float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
-    private void UpdateHeadSection()
+    public void UpdateHeadSection()
     {
         Vector2 gridPos = GridPosition(transform.position);
 
@@ -75,10 +75,19 @@ public class CentipedeSection : MonoBehaviour
         if (Behind != null)
             Behind.UpdateBodySection();
     }
+  
     private Vector2 GridPosition(Vector2 position)
     {
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
         return position;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        {
+            collision.collider.enabled = false;
+            this.Centipede.RemoveSection(this);
+        }
     }
 }
