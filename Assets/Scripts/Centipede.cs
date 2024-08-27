@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class Centipede : MonoBehaviour
 {
     [HideInInspector]
@@ -85,5 +85,13 @@ public class Centipede : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
         return position;
+    }
+
+    /// <summary>
+    /// Return a random section from centipede(temporary).
+    /// </summary>
+    public CentipedeSection GetRandomSection() {
+        int length = sections.Count;
+        return GetSectionAt(Random.Range(0, length));
     }
 }
