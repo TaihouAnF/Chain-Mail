@@ -99,7 +99,7 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: e9238059d6bc6d442be785bfaa09c47d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
