@@ -17,6 +17,7 @@ public class Centipede : MonoBehaviour
     public LayerMask CollisionMask;
     public BoxCollider2D HomeBound;
     public Barrier BarrierPrefab;
+    public event Action OnTargetDestroy;    // An event for notifying enemy
 
     private void Start()
     {
@@ -70,6 +71,11 @@ public class Centipede : MonoBehaviour
         }
 
         sections.Remove(section);
+        if (section.isLockedOn)     // Clear the target marker if this is the target
+        {
+            OnTargetDestroy?.Invoke();
+            section.isLockedOn = false;
+        }
         Destroy(section.gameObject);
     }
     private CentipedeSection GetSectionAt(int index)

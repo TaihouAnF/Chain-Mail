@@ -22,6 +22,7 @@ public class CentipedeSection : MonoBehaviour
     [HideInInspector]
     public CentipedeSection Behind;
     public bool IsHead => Ahead == null;
+    public bool isLockedOn = false;     // Target marker
 
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;

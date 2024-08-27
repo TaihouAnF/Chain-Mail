@@ -12,10 +12,12 @@ public class EnemyController : MonoBehaviour
     public float Speed = 5.0f;
     public float ShootCoolDown = 2.0f;
     public Centipede centipede;
+    private CentipedeSection targetSection;
     private void Awake() 
     { 
         rb = GetComponent<Rigidbody2D>();
-        BootTime = 3.0f;
+        targetSection = null;
+        centipede.OnTargetDestroy += OnTargetClear;
     }
 
     // Update is called once per frame
@@ -44,12 +46,26 @@ public class EnemyController : MonoBehaviour
     }
 
     /// <summary>
-    /// Enemy movement.
+    /// Clear the target after destroy/destroy event raises.
+    /// </summary>
+    private void OnTargetClear() {
+        if (targetSection != null)
+        {
+            targetSection = null;
+        }
+    }
+
+    /// <summary>
+    /// Enemy movement, following one of section of centipedes.
     /// </summary>
     private void UpdateMovement() 
     {
-        CentipedeSection randomSection = centipede.GetRandomSection();  // Only when new section required
-        Vector2 targetPos = GridPosition(randomSection.transform.position);
+        if (targetSection == null) 
+        {
+            targetSection = centipede.GetRandomSection();  // Only when new section required
+            targetSection.isLockedOn = true;
+        }
+        Vector2 targetPos = GridPosition(targetSection.transform.position);
         Vector2 currPos = transform.position;
         targetPos.y = currPos.y;
         float currSpeed = Speed * Time.deltaTime;
@@ -77,6 +93,14 @@ public class EnemyController : MonoBehaviour
         else 
         {
             ShootCoolDown -= Time.deltaTime;
+        }
+    }
+
+    private void OnDestroy() 
+    {
+        if (centipede != null) 
+        {
+            centipede.OnTargetDestroy -= OnTargetClear;
         }
     }
 }

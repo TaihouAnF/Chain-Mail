@@ -40,7 +40,6 @@ public class Projectile : MonoBehaviour
     private void OnAttackHappened() {
         if (rb.isKinematic) 
         {
-            Debug.Log("Shoot");
             transform.SetParent(null);
             rb.bodyType = RigidbodyType2D.Dynamic;
             col.enabled = true;
