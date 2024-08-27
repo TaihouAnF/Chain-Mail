@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6140596874215599786, guid: db41454ed75e02244a0415fb24ad7fbb, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1039263941}
     - target: {fileID: 7154508430845439073, guid: db41454ed75e02244a0415fb24ad7fbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -186,7 +190,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8686582024716757966, guid: db41454ed75e02244a0415fb24ad7fbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -227,7 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421a80d6c1a3d14299b810fd3ab8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  BootTime: 3
+  Speed: 5
   ShootCoolDown: 2
   centipede: {fileID: 816894054}
 --- !u!1001 &1104902358

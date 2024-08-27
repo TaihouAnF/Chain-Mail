@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private Transform parent;
+    [SerializeField] private EnemyController enemy;
 
     public float Speed = 50f;
 
@@ -17,18 +18,12 @@ public class Projectile : MonoBehaviour
         col.enabled = false;
 
         parent = transform.parent;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (rb.isKinematic && Input.GetButton("Fire1"))
+        if (enemy != null) 
         {
-            transform.SetParent(null);
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            col.enabled = true;
+            enemy.OnAttack += OnAttackHappened;
         }
     }
+
     public void FixedUpdate()
     {
         if (!rb.isKinematic)
@@ -36,6 +31,27 @@ public class Projectile : MonoBehaviour
             Vector2 pos = rb.position;
             pos += Vector2.up * Speed * Time.fixedDeltaTime;
             rb.MovePosition(pos);
+        }
+    }
+
+    /// <summary>
+    /// An Observing method to subscribe to enemy attack.
+    /// </summary>
+    private void OnAttackHappened() {
+        if (rb.isKinematic) 
+        {
+            Debug.Log("Shoot");
+            transform.SetParent(null);
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            col.enabled = true;
+        }
+    }
+
+    private void OnDestry() 
+    {
+        if (enemy != null) 
+        {
+            enemy.OnAttack -= OnAttackHappened;
         }
     }
 
