@@ -410,8 +410,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 293800854}
     - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
+      propertyPath: PedeLength
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
       propertyPath: CollisionMask.m_Bits
-      value: 65
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 8183840945309989966, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
       propertyPath: m_Name
