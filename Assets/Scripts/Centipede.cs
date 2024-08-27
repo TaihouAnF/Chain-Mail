@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Centipede : MonoBehaviour
 {
-    private List<CentipedeSection> sections = new List<CentipedeSection>();
+    [HideInInspector]
+    public List<CentipedeSection> sections = new List<CentipedeSection>();
 
     public CentipedeSection SectionPrefab;
     public Sprite HeadSprite;
