@@ -106,12 +106,20 @@ public class CentipedeSection : MonoBehaviour
         position.y = Mathf.Round(position.y);
         return position;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.enabled && other.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
         {
-            other.enabled = false;
+            //collision.enabled = false;
+            
             this.Centipede.RemoveSection(this);
+            if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            {
+                //collision.enabled = false;
+
+                this.Centipede.RemoveSection(this);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }
