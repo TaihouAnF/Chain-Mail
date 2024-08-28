@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnDestry() 
+    private void OnDestroy()
     {
         if (enemy != null) 
         {
