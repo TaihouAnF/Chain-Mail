@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if (centipede.sections.Count == 0) return;
         if (BootTime <= 0) {
             UpdateMovement();
             UpdateAttack();
@@ -60,7 +61,6 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void UpdateMovement() 
     {
-        if (centipede.sections.Count == 0) return;
         if (targetSection == null) 
         {
             targetSection = centipede.GetRandomSection();  // Only when new section required

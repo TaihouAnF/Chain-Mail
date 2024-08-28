@@ -54,7 +54,7 @@ public class Centipede : MonoBehaviour
         }
     }
 
-    public void RemoveSection(CentipedeSection section)
+    public void RemoveSectionAndSpawn(CentipedeSection section)
     {
         Vector3 pos = GridPosition(section.transform.position);
         Instantiate(BarrierPrefab, pos, Quaternion.identity);
@@ -70,6 +70,15 @@ public class Centipede : MonoBehaviour
             section.Behind.UpdateHeadSection();
         }
 
+        RemoveSection(section);
+    }
+
+    /// <summary>
+    /// Remove Sections only, won't spawn any barriers.
+    /// </summary>
+    /// <param name="section">A Centipede Section class.</param>
+    public void RemoveSection(CentipedeSection section) 
+    {
         sections.Remove(section);
         if (section.isLockedOn)     // Clear the target marker if this is the target
         {
@@ -78,6 +87,7 @@ public class Centipede : MonoBehaviour
         }
         Destroy(section.gameObject);
     }
+
     private CentipedeSection GetSectionAt(int index)
     {
         if(index >= 0 && index < sections.Count)
