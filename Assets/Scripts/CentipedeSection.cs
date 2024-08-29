@@ -74,11 +74,23 @@ public class CentipedeSection : MonoBehaviour
         if (Physics2D.OverlapBox(targetPos, Vector2.zero, 0f, Centipede.CollisionMask))
         {
             // Reverse horizontal direction
-            direction.x = -direction.x;
+            if (dir == Directions.right || dir == Directions.left)
+            {
+                direction.x = -direction.x;
 
-            // Advance to the next row
-            targetPos.x = gridPos.x;
-            targetPos.y = gridPos.y + direction.y;
+                // Advance to the next row
+                targetPos.x = gridPos.x;
+                targetPos.y = gridPos.y + direction.y;
+            }
+            // Reverse horizontal direction
+            if (dir == Directions.up || dir == Directions.down)
+            {
+                direction.y = -direction.y;
+
+                // Advance to the next row
+                targetPos.y = gridPos.y;
+                targetPos.x = gridPos.x + direction.x;
+            }
 
             //Bounds homeBounds = Centipede.HomeBound.bounds;
 

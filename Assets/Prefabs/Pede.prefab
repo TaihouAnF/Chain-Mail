@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d3b31a02e07bf4e87f1c1a8ce5e554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sections: []
   SectionPrefab: {fileID: 7022579497525810285, guid: 556dee210cfa9e445b7672d2c0cad73a, type: 3}
-  HeadSprite: {fileID: 21300000, guid: d4ca290d869513b489571fd9322b6591, type: 3}
-  BodySprite: {fileID: 21300000, guid: 919a57c13f6e9354cb3d82af02c3d9e6, type: 3}
+  HeadSprite: {fileID: 21300000, guid: 26bdac5322e4b7647b9adad21d729686, type: 3}
+  BodySprite: {fileID: 21300000, guid: 006c51e95aaa6f74eb0c4712137ff97c, type: 3}
   PedeLength: 10
   CentiSpeed: 5
   CollisionMask:
