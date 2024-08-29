@@ -22,6 +22,7 @@ public class CentipedeSection : MonoBehaviour
     [HideInInspector]
     public CentipedeSection Behind;
     public bool IsHead => Ahead == null;
+    public bool isLockedOn = false;     // Target marker
 
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;
@@ -112,14 +113,37 @@ public class CentipedeSection : MonoBehaviour
         {
             //collision.enabled = false;
             
-            this.Centipede.RemoveSection(this);
+            this.Centipede.RemoveSectionAndSpawn(this);
             if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 //collision.enabled = false;
 
-                this.Centipede.RemoveSection(this);
+                this.Centipede.RemoveSectionAndSpawn(this);
                 Destroy(collision.gameObject);
             }
         }
+        else if (collision.enabled && IsHead && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))   // Hitting the enemy with a head
+        {
+            // Score Update methods as well as clearing the sections
+            GameManager.Instance.UpdateScore(HitEnemy());
+        }
+    }
+    
+    /// <summary>
+    /// Method that being called after A *HEAD* hitting the enemy, clearing all other sections and returning the score for that 
+    /// Centipede.
+    /// </summary>
+    /// <returns>The score earned by that centipede. </returns>
+    private int HitEnemy()
+    {
+        int score = 0;
+        CentipedeSection sec = this;
+        while (sec != null) {
+            score++;
+            CentipedeSection sec_prev = sec;
+            sec = sec.Behind;
+            Centipede.RemoveSection(sec_prev);
+        }
+        return score;
     }
 }
