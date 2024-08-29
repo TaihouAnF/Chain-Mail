@@ -199,6 +199,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1039263941}
   m_SourcePrefab: {fileID: 100100000, guid: db41454ed75e02244a0415fb24ad7fbb, type: 3}
+--- !u!1 &279758638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2215293155699478810, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
+  m_PrefabInstance: {fileID: 728480520984388506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &293800854 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3562152490423233629, guid: ec50eeba3bf833b468344644e8b9d219, type: 3}
@@ -416,9 +421,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 293800854}
     - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
+      propertyPath: HudCanvas
+      value: 
+      objectReference: {fileID: 279758638}
+    - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
       propertyPath: PedeLength
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1618658172}
     - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
       propertyPath: CollisionMask.m_Bits
       value: 321
@@ -635,6 +648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1265743981155448066, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1618658172}
     - target: {fileID: 1946607573339189072, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -727,6 +744,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1836969832}
+    - target: {fileID: 6787455384756529630, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951933413439204989, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933393591170059312, guid: ca4cf5224442e294aa7c97bbc35f4d07, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

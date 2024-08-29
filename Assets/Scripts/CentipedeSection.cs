@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public enum Directions
 {
@@ -24,6 +25,7 @@ public class CentipedeSection : MonoBehaviour
     public bool IsHead => Ahead == null;
     public bool isLockedOn = false;     // Target marker
 
+    private HudController HudCanvas;
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;
     private Vector2 targetPos;
@@ -32,6 +34,7 @@ public class CentipedeSection : MonoBehaviour
     {
         SRenderer = GetComponent<SpriteRenderer>();
         targetPos = transform.position;
+        HudCanvas = GameObject.FindObjectOfType<HudController>();
     }
 
     private void Update()
@@ -63,13 +66,13 @@ public class CentipedeSection : MonoBehaviour
 
         targetPos = gridPos;
         if(dir == Directions.up)
-            targetPos.y -= direction.y;
+            targetPos.y += Vector2.up.y;
         else if (dir == Directions.right)
-            targetPos.x += direction.x;
+            targetPos.x += Vector2.right.x;
         else if (dir == Directions.down)
-            targetPos.y += direction.y;
+            targetPos.y += Vector2.down.y;
         else if (dir == Directions.left)
-            targetPos.x -= direction.x;
+            targetPos.x += Vector2.left.x;
 
         if (Physics2D.OverlapBox(targetPos, Vector2.zero, 0f, Centipede.CollisionMask))
         {
@@ -129,7 +132,7 @@ public class CentipedeSection : MonoBehaviour
             if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 //collision.enabled = false;
-
+                //xxx;
                 this.Centipede.RemoveSectionAndSpawn(this);
                 Destroy(collision.gameObject);
             }
