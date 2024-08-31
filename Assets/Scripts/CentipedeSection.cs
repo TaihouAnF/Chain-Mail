@@ -27,6 +27,7 @@ public class CentipedeSection : MonoBehaviour
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;
     private Vector2 targetPos;
+    public AudioSource soundSuccess;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class CentipedeSection : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
             dir = Directions.up;
         else if(Input.GetKey(KeyCode.D))
             dir = Directions.right;
@@ -56,6 +57,7 @@ public class CentipedeSection : MonoBehaviour
         Vector2 moveDirection = (targetPos - currentPos).normalized;
         float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        soundSuccess.Play();
     }
     public void UpdateHeadSection()
     {
@@ -108,7 +110,6 @@ public class CentipedeSection : MonoBehaviour
     {
         targetPos = GridPosition(Ahead.transform.position);
         direction = Ahead.direction;
-
         if (Behind != null)
             Behind.UpdateBodySection();
     }
@@ -157,5 +158,6 @@ public class CentipedeSection : MonoBehaviour
             Centipede.RemoveSection(sec_prev);
         }
         return score;
+
     }
 }

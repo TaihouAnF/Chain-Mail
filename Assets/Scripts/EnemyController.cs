@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     [Header("Reference")]
     public Centipede centipede;
     private CentipedeSection targetSection;
+    public AudioSource soundShoot;
 
     private void Awake() 
     { 
@@ -82,6 +83,8 @@ public class EnemyController : MonoBehaviour
     private void Attack() 
     {
         OnAttack?.Invoke();
+        soundShoot.Play();
+
     }
 
     /// <summary>
