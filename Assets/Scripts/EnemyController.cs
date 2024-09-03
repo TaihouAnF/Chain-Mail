@@ -92,6 +92,7 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void UpdateAttack() 
     {
+        if (centipede.sections.Count == 0) { return; }
         if (ShootCoolDown <= 0) 
         {
             Attack();
