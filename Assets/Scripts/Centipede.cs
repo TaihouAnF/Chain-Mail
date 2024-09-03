@@ -7,6 +7,8 @@ public class Centipede : MonoBehaviour
 {
     [HideInInspector]
     public List<CentipedeSection> sections = new List<CentipedeSection>();
+    public GameObject HudCanvas;
+    public GameManager GameManager;
 
     public CentipedeSection SectionPrefab;
     public Sprite HeadSprite;
@@ -17,11 +19,21 @@ public class Centipede : MonoBehaviour
     public LayerMask CollisionMask;
     public BoxCollider2D HomeBound;
     public Barrier BarrierPrefab;
-    public event Action OnTargetDestroy;    // An event for notifying enemy
-
+    public event Action OnTargetDestroy;
+    private bool NextLevel = false;
+    public AudioSource soundSectionDestroyed;
+    public Shake screenShake;
     private void Start()
     {
         Respawn();
+    }
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.ReturnScore() > 0 && NextLevel == false)
+        {
+            NextLevel = true;
+            StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());
+        }
     }
 
     public void Respawn()
@@ -84,8 +96,13 @@ public class Centipede : MonoBehaviour
         {
             OnTargetDestroy?.Invoke();
             section.isLockedOn = false;
+
         }
         Destroy(section.gameObject);
+        if (sections.Count <= 0)
+            HudCanvas.GetComponent<HudController>().Lose();
+        soundSectionDestroyed.Play();
+        StartCoroutine(screenShake.Shaking());
     }
 
     private CentipedeSection GetSectionAt(int index)
@@ -110,4 +127,5 @@ public class Centipede : MonoBehaviour
         int length = sections.Count;
         return GetSectionAt(Random.Range(0, length));
     }
+
 }

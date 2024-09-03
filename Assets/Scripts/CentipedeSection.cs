@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public enum Directions
 {
@@ -24,19 +25,22 @@ public class CentipedeSection : MonoBehaviour
     public bool IsHead => Ahead == null;
     public bool isLockedOn = false;     // Target marker
 
+    private HudController HudCanvas;
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;
     private Vector2 targetPos;
+    public AudioSource soundSuccess;
 
     private void Awake()
     {
         SRenderer = GetComponent<SpriteRenderer>();
         targetPos = transform.position;
+        HudCanvas = GameObject.FindObjectOfType<HudController>();
     }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
             dir = Directions.up;
         else if(Input.GetKey(KeyCode.D))
             dir = Directions.right;
@@ -56,6 +60,7 @@ public class CentipedeSection : MonoBehaviour
         Vector2 moveDirection = (targetPos - currentPos).normalized;
         float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        //soundSuccess.Play();
     }
     public void UpdateHeadSection()
     {
@@ -63,13 +68,13 @@ public class CentipedeSection : MonoBehaviour
 
         targetPos = gridPos;
         if(dir == Directions.up)
-            targetPos.y -= direction.y;
+            targetPos.y += Vector2.up.y;
         else if (dir == Directions.right)
-            targetPos.x += direction.x;
+            targetPos.x += Vector2.right.x;
         else if (dir == Directions.down)
-            targetPos.y += direction.y;
+            targetPos.y += Vector2.down.y;
         else if (dir == Directions.left)
-            targetPos.x -= direction.x;
+            targetPos.x += Vector2.left.x;
 
         if (Physics2D.OverlapBox(targetPos, Vector2.zero, 0f, Centipede.CollisionMask))
         {
@@ -92,6 +97,7 @@ public class CentipedeSection : MonoBehaviour
                 targetPos.x = gridPos.x + direction.x;
             }
 
+            soundSuccess.Play();
             //Bounds homeBounds = Centipede.HomeBound.bounds;
 
             // Reverse vertical direction if the segment leaves the home area
@@ -108,7 +114,6 @@ public class CentipedeSection : MonoBehaviour
     {
         targetPos = GridPosition(Ahead.transform.position);
         direction = Ahead.direction;
-
         if (Behind != null)
             Behind.UpdateBodySection();
     }
@@ -129,7 +134,7 @@ public class CentipedeSection : MonoBehaviour
             if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 //collision.enabled = false;
-
+                //xxx;
                 this.Centipede.RemoveSectionAndSpawn(this);
                 Destroy(collision.gameObject);
             }
@@ -157,5 +162,6 @@ public class CentipedeSection : MonoBehaviour
             Centipede.RemoveSection(sec_prev);
         }
         return score;
+
     }
 }

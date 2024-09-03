@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     private void Start() {
         currScore = 0;
     }
+    
+    public int ReturnScore() { return currScore; }
 
     public void UpdateScore(int score) 
     {
