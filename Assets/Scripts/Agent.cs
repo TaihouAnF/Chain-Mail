@@ -78,10 +78,16 @@ public class Agent : MonoBehaviour
                           transform.position.x > agentController.rightSpawn.position.x);
         if (shouldKill) 
         {
-            Debug.Log("Killing Agents.");
-            agentController.currentAgent = null;
-            Destroy(gameObject);
+            DestroyAgent();
         }
+    }
+
+    public void DestroyAgent()
+    {
+        Debug.Log("Killing Agents.");
+        agentController.currentAgent = null;
+        agentController.coolDown = agentController.spawnCoolDown;   // Reset Cooldown
+        Destroy(gameObject);
     }
 
     private Vector2 GridPosition(Vector2 position)
@@ -89,5 +95,11 @@ public class Agent : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
         return position;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        col.enabled = false;
+        DestroyAgent();
     }
 }

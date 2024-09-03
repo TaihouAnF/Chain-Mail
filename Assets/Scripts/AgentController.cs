@@ -7,7 +7,7 @@ public class AgentController : MonoBehaviour
 {
     [Header("Spider Attributes")]
     public float spawnCoolDown = 10.0f;
-    private float coolDown;
+    [HideInInspector]  public float coolDown;
 
     [Header("Reference")]
     public Agent agentPrefab;
@@ -27,9 +27,9 @@ public class AgentController : MonoBehaviour
     void Update()
     {
         // Stop spawning when game ends
-        if (centipede.sections.Count == 0) { return; }
+        if (centipede.sections.Count == 0 || currentAgent != null) { return; }
         //Debug.Log(centipede.sections.Count);
-        if (coolDown <= 0 && currentAgent == null)
+        if (coolDown <= 0)
         {
             Debug.Log("Spawning");
             coolDown = spawnCoolDown;
@@ -48,7 +48,7 @@ public class AgentController : MonoBehaviour
                 currentAgent.moveLeft = false;
             }
         }
-        else if (coolDown > 0)
+        else
         {
              coolDown -= Time.deltaTime;
         }
