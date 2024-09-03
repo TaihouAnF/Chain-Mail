@@ -6,7 +6,7 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     [Header("Spider Attributes")]
-    public float spawnCoolDown = 1.0f;
+    public float spawnCoolDown = 10.0f;
     private float coolDown;
 
     [Header("Reference")]
@@ -18,23 +18,28 @@ public class AgentController : MonoBehaviour
     public Centipede centipede;
     public Agent currentAgent;    // Temporary as one obj, could be list later
 
+    private void Start()
+    {
+        coolDown = spawnCoolDown;
+    }
+
     // Update is called once per frame
     void Update()
     {
         // Stop spawning when game ends
         if (centipede.sections.Count == 0) { return; }
         //Debug.Log(centipede.sections.Count);
-        if (Input.GetKey(KeyCode.K) && currentAgent == null)
+        if (coolDown <= 0 && currentAgent == null)
         {
             Debug.Log("Spawning");
-            // coolDown = spawnCoolDown;
+            coolDown = spawnCoolDown;
             // time to spawn one
             int spawnCase = Random.Range(0, 2);
             if (spawnCase == 0) // Spawn right and move left
             {   
                 currentAgent = Instantiate(agentPrefab, rightSpawn.position, Quaternion.identity);
                 currentAgent.agentController = this;
-                currentAgent.moveLeft = true;
+                currentAgent.moveLeft = true;  
             }
             else // Spawn left and move right
             {
@@ -43,9 +48,9 @@ public class AgentController : MonoBehaviour
                 currentAgent.moveLeft = false;
             }
         }
-        // else
-        // {
-        //     coolDown -= Time.deltaTime;
-        // }
+        else if (coolDown > 0)
+        {
+             coolDown -= Time.deltaTime;
+        }
     }
 }
