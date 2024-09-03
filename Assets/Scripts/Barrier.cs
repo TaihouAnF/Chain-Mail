@@ -6,9 +6,10 @@ public class Barrier : MonoBehaviour
     public Sprite[] Sprites = { };
     private SpriteRenderer sRenderer;
     private int hp = 0;
-
+    public AudioSource soundBarrierDestroyed;
     private void Awake()
     {
+
         sRenderer = GetComponent<SpriteRenderer>();
         sRenderer.sprite = Sprites[Sprites.Length - 1]; // Set the sprite at the end of the array as default
         hp = Sprites.Length;
@@ -19,6 +20,7 @@ public class Barrier : MonoBehaviour
         hp -= damage;
         if(hp > 0)
         {
+            soundBarrierDestroyed.Play();
             sRenderer.sprite = Sprites[hp - 1];
         }
         else

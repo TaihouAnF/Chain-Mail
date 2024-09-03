@@ -11,8 +11,12 @@ public class EnemyController : MonoBehaviour
     public float BootTime = 3.0f;
     public float Speed = 5.0f;
     public float ShootCoolDown = 2.0f;
+
+    [Header("Reference")]
     public Centipede centipede;
     private CentipedeSection targetSection;
+    public AudioSource soundShoot;
+
     private void Awake() 
     { 
         rb = GetComponent<Rigidbody2D>();
@@ -22,8 +26,7 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if (centipede.sections.Count == 0) return;
+    { 
         if (BootTime <= 0) {
             UpdateMovement();
             UpdateAttack();
@@ -61,6 +64,7 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void UpdateMovement() 
     {
+        if (centipede.sections.Count == 0) { return; }
         if (targetSection == null) 
         {
             targetSection = centipede.GetRandomSection();  // Only when new section required
@@ -79,6 +83,8 @@ public class EnemyController : MonoBehaviour
     private void Attack() 
     {
         OnAttack?.Invoke();
+        soundShoot.Play();
+
     }
 
     /// <summary>

@@ -19,10 +19,10 @@ public class Centipede : MonoBehaviour
     public LayerMask CollisionMask;
     public BoxCollider2D HomeBound;
     public Barrier BarrierPrefab;
-    public event Action OnTargetDestroy;    // An event for notifying enemy
-
+    public event Action OnTargetDestroy;
     private bool NextLevel = false;
-
+    public AudioSource soundSectionDestroyed;
+    public Shake screenShake;
     private void Start()
     {
         Respawn();
@@ -101,6 +101,8 @@ public class Centipede : MonoBehaviour
         Destroy(section.gameObject);
         if (sections.Count <= 0)
             HudCanvas.GetComponent<HudController>().Lose();
+        soundSectionDestroyed.Play();
+        StartCoroutine(screenShake.Shaking());
     }
 
     private CentipedeSection GetSectionAt(int index)
@@ -125,4 +127,5 @@ public class Centipede : MonoBehaviour
         int length = sections.Count;
         return GetSectionAt(Random.Range(0, length));
     }
+
 }
