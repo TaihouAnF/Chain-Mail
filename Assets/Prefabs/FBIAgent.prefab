@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2203685305575399104}
   - component: {fileID: 1018430120811373565}
   - component: {fileID: 4199664411462381933}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: FBIAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: e9238059d6bc6d442be785bfaa09c47d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

@@ -29,8 +29,8 @@ public class Agent : MonoBehaviour
 
     void Start() 
     {
-        minY = agentController.homeBound.bounds.min.y;
-        maxY = agentController.homeBound.bounds.max.y;
+        minY = agentController.lowerBound.position.y;
+        maxY = agentController.upperBound.position.y;
         targetPos = transform.position;
         targetPos = GridPosition(targetPos);
     }
@@ -52,7 +52,7 @@ public class Agent : MonoBehaviour
     private void GetNextTargetPos() 
     {
         int up = Random.Range(0, 1);
-        float y_pos = 0.0f;
+        float y_pos;
         targetPos = transform.position;
         if (up == 1) {
             y_pos = Random.Range(transform.position.y, maxY);
