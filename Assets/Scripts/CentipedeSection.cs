@@ -60,7 +60,7 @@ public class CentipedeSection : MonoBehaviour
         Vector2 moveDirection = (targetPos - currentPos).normalized;
         float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
-        soundSuccess.Play();
+        //soundSuccess.Play();
     }
     public void UpdateHeadSection()
     {
@@ -97,6 +97,7 @@ public class CentipedeSection : MonoBehaviour
                 targetPos.x = gridPos.x + direction.x;
             }
 
+            soundSuccess.Play();
             //Bounds homeBounds = Centipede.HomeBound.bounds;
 
             // Reverse vertical direction if the segment leaves the home area
