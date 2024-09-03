@@ -11,11 +11,13 @@ public class HudController : MonoBehaviour
     public GameObject LosePanel;
     public GameObject NextLevelPanel;
 
+    public bool startScreen = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        LosePanel.SetActive(false);
-        NextLevelPanel.SetActive(false);
+        //LosePanel.SetActive(false);
+        //NextLevelPanel.SetActive(false);
     }
 
     public void Quit()
@@ -38,7 +40,20 @@ public class HudController : MonoBehaviour
         NextLevelPanel.SetActive(true);
         yield return new WaitForSecondsRealtime(5);
         NextLevelPanel.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
+    }
+    private void Update()
+    {
+        if (Input.anyKeyDown && startScreen)
+        {
+            LosePanel.SetActive(false);
+            NextLevelPanel.SetActive(true);
+        }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }
