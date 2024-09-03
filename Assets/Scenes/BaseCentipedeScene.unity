@@ -647,9 +647,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 287683408264415550, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875758308832128193, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467306434075935419, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7246477760079491624, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
       propertyPath: m_Name
       value: Borders
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246477760079491624, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485527013132279502, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8405116742004217715, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +710,10 @@ PrefabInstance:
     - target: {fileID: 8405116742004217715, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161843940925407989, guid: 4b7207f3ee7d00447bb87c733efcd187, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
