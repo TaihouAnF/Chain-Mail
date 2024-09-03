@@ -364,6 +364,7 @@ MonoBehaviour:
   GameManager: {fileID: 0}
   LosePanel: {fileID: 1051835907}
   NextLevelPanel: {fileID: 219925226}
+  LoadingSlider: {fileID: 0}
   startScreen: 1
 --- !u!1 &753338072
 GameObject:

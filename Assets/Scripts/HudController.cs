@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HudController : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class HudController : MonoBehaviour
     public GameManager GameManager;
     public GameObject LosePanel;
     public GameObject NextLevelPanel;
+    public Slider LoadingSlider;
 
     public bool startScreen = false;
+    private bool loadingNextLevel = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,8 @@ public class HudController : MonoBehaviour
     public IEnumerator NextLevel()
     {
         NextLevelPanel.SetActive(true);
+        LosePanel.SetActive(false);
+        loadingNextLevel = true;
         yield return new WaitForSecondsRealtime(5);
         NextLevelPanel.SetActive(false);
         SceneManager.LoadScene(1);
@@ -50,6 +55,8 @@ public class HudController : MonoBehaviour
             LosePanel.SetActive(false);
             NextLevelPanel.SetActive(true);
         }
+        if (loadingNextLevel)
+            LoadingSlider.value = LoadingSlider.value + (Time.deltaTime / 3);
     }
 
     public void StartGame()
