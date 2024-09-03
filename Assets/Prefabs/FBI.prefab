@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8764776330115947400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2905359465628320143}
+  - component: {fileID: 88856153565129159}
+  m_Layer: 0
+  m_Name: FBI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2905359465628320143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764776330115947400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -70.55773, y: 722.65125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88856153565129159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764776330115947400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874ede26c95b06045b9fd801c9a31a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCoolDown: 1
+  agentPrefab: {fileID: 2203685305575399104, guid: f630efaa845e7664f8051f1126912f05, type: 3}
+  leftSpawn: {fileID: 301931172870991116, guid: fad1691e56103f642a6e5718c6c758d0, type: 3}
+  rightSpawn: {fileID: 6515374995435942912, guid: f68223f4c41cc1541a2b1233a5851cbb, type: 3}
+  homeBound: {fileID: 480430960240200513, guid: b0edd87d0100fca4fa112a0d0ca842ef, type: 3}
+  centipede: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
+  currentAgent: {fileID: 0}
