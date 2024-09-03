@@ -6,7 +6,7 @@ public class Agent : MonoBehaviour
 {
     [Header("Agent Attribute")]
     public int agentHealth = 1;
-    public float speed = 2.0f;
+    public float speed = 10.0f;
     public Sprite sprite;
     private float minY;
     private float maxY;
@@ -51,20 +51,20 @@ public class Agent : MonoBehaviour
 
     private void GetNextTargetPos() 
     {
-        int up = Random.Range(0, 1);
+        int up = Random.Range(0, 2);
         float y_pos;
         targetPos = transform.position;
         if (up == 1) {
             y_pos = Random.Range(transform.position.y, maxY);
-            targetPos.x += moveLeft ? (y_pos - transform.position.y) : 
-                                            -(y_pos - transform.position.y);
+            targetPos.x += moveLeft ? -(y_pos - transform.position.y) : 
+                                            (y_pos - transform.position.y);
             targetPos.y = y_pos;
         }
         else 
         {
             y_pos = Random.Range(minY, transform.position.y);
-            targetPos.x += moveLeft ? (transform.position.y - y_pos) : 
-                                            -(transform.position.y - y_pos);
+            targetPos.x += moveLeft ? -(transform.position.y - y_pos) : 
+                                            (transform.position.y - y_pos);
             targetPos.y = y_pos;
         }
         targetPos = GridPosition(targetPos);
@@ -78,10 +78,16 @@ public class Agent : MonoBehaviour
                           transform.position.x > agentController.rightSpawn.position.x);
         if (shouldKill) 
         {
-            Debug.Log("Killing Agents.");
-            agentController.currentAgent = null;
-            Destroy(gameObject);
+            DestroyAgent();
         }
+    }
+
+    public void DestroyAgent()
+    {
+        Debug.Log("Killing Agents.");
+        agentController.currentAgent = null;
+        agentController.coolDown = agentController.spawnCoolDown;   // Reset Cooldown
+        Destroy(gameObject);
     }
 
     private Vector2 GridPosition(Vector2 position)
@@ -89,5 +95,11 @@ public class Agent : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
         return position;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        col.enabled = false;
+        DestroyAgent();
     }
 }

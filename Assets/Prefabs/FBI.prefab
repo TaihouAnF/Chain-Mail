@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874ede26c95b06045b9fd801c9a31a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCoolDown: 1
+  spawnCoolDown: 10
   agentPrefab: {fileID: 2203685305575399104, guid: f630efaa845e7664f8051f1126912f05, type: 3}
   leftSpawn: {fileID: 301931172870991116, guid: fad1691e56103f642a6e5718c6c758d0, type: 3}
   rightSpawn: {fileID: 6515374995435942912, guid: f68223f4c41cc1541a2b1233a5851cbb, type: 3}
