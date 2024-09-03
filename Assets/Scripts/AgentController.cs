@@ -13,22 +13,17 @@ public class AgentController : MonoBehaviour
     public Agent agentPrefab;
     public Transform leftSpawn;
     public Transform rightSpawn;
-    public BoxCollider2D homeBound;
+    public Transform upperBound;
+    public Transform lowerBound;
     public Centipede centipede;
     public Agent currentAgent;    // Temporary as one obj, could be list later
-
-    // void Start() 
-    // {
-    //     // Debug.Log("Starts");
-    //     // coolDown = 0.0f;
-    // }
 
     // Update is called once per frame
     void Update()
     {
         // Stop spawning when game ends
-        // if (centipede.sections.Count == 0) { return; }
-        // Debug.Log(centipede.sections.Count);
+        if (centipede.sections.Count == 0) { return; }
+        //Debug.Log(centipede.sections.Count);
         if (Input.GetKey(KeyCode.K) && currentAgent == null)
         {
             Debug.Log("Spawning");
@@ -38,11 +33,13 @@ public class AgentController : MonoBehaviour
             if (spawnCase == 0) // Spawn right and move left
             {   
                 currentAgent = Instantiate(agentPrefab, rightSpawn.position, Quaternion.identity);
+                currentAgent.agentController = this;
                 currentAgent.moveLeft = true;
             }
             else // Spawn left and move right
             {
                 currentAgent = Instantiate(agentPrefab, leftSpawn.position, Quaternion.identity);
+                currentAgent.agentController = this;
                 currentAgent.moveLeft = false;
             }
         }

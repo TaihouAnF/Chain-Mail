@@ -97,7 +97,7 @@ public class CentipedeSection : MonoBehaviour
                 targetPos.x = gridPos.x + direction.x;
             }
 
-            soundSuccess.Play();
+            
             //Bounds homeBounds = Centipede.HomeBound.bounds;
 
             // Reverse vertical direction if the segment leaves the home area
@@ -153,6 +153,7 @@ public class CentipedeSection : MonoBehaviour
     /// <returns>The score earned by that centipede. </returns>
     private int HitEnemy()
     {
+        soundSuccess.Play();
         int score = 0;
         CentipedeSection sec = this;
         while (sec != null) {
