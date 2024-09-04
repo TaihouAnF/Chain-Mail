@@ -29,7 +29,7 @@ public class Centipede : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager.Instance.ReturnScore() > 0 && NextLevel == false)
+        if (GameManager.Instance.ReturnScore() >= GameManager.Instance.GetRequiredScore() && NextLevel == false)
         {
             NextLevel = true;
             StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());

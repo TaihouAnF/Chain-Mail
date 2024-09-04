@@ -31,7 +31,6 @@ public class AgentController : MonoBehaviour
         //Debug.Log(centipede.sections.Count);
         if (coolDown <= 0)
         {
-            Debug.Log("Spawning");
             coolDown = spawnCoolDown;
             // time to spawn one
             int spawnCase = Random.Range(0, 2);

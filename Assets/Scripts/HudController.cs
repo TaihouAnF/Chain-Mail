@@ -13,6 +13,7 @@ public class HudController : MonoBehaviour
     public GameObject NextLevelPanel;
     public Slider LoadingSlider;
     public TextMeshProUGUI PedeLenText;
+    public TextMeshProUGUI scoreText;
 
     public bool startScreen = false;
     private bool loadingNextLevel = false;
@@ -45,9 +46,19 @@ public class HudController : MonoBehaviour
         LosePanel.SetActive(false);
         loadingNextLevel = true;
         yield return new WaitForSecondsRealtime(5);
+        GameManager.Instance.UpdateRequiredScore();
         NextLevelPanel.SetActive(false);
         SceneManager.LoadScene(1);
 
+    }
+
+    private void FixedUpdate()
+    {
+        if(GameObject.FindObjectOfType<Centipede>() != null)
+        {
+            PedeLenText.text = "Length: " + GameObject.FindObjectOfType<Centipede>().PedeLength.ToString();
+            scoreText.text = "Score: " + GameManager.Instance.ReturnScore().ToString();
+        }
     }
     private void Update()
     {
@@ -56,8 +67,6 @@ public class HudController : MonoBehaviour
             LosePanel.SetActive(false);
             NextLevelPanel.SetActive(true);
         }
-        if(GameObject.FindObjectOfType<Centipede>() != null)
-            PedeLenText.text = "Length: " + GameObject.FindObjectOfType<Centipede>().PedeLength.ToString();
         if (loadingNextLevel)
             LoadingSlider.value = LoadingSlider.value + (Time.deltaTime / 3);
     }
