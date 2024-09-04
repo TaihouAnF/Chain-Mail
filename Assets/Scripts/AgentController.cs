@@ -17,21 +17,27 @@ public class AgentController : MonoBehaviour
     public Transform lowerBound;
     public Centipede centipede;
     public Agent currentAgent;    // Temporary as one obj, could be list later
+    public bool shouldStop;
 
     private void Start()
     {
         coolDown = spawnCoolDown;
+        shouldStop = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (centipede.sections.Count <= 0) 
+        {
+            shouldStop = true;
+            return;
+        }
         // Stop spawning when game ends
-        if (centipede.sections.Count == 0 || currentAgent != null) { return; }
+        if (currentAgent != null) { return; }
         //Debug.Log(centipede.sections.Count);
         if (coolDown <= 0)
         {
-            Debug.Log("Spawning");
             coolDown = spawnCoolDown;
             // time to spawn one
             int spawnCase = Random.Range(0, 2);

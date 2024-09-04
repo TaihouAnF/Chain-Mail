@@ -14,7 +14,7 @@ public class Centipede : MonoBehaviour
     public CentipedeSection SectionPrefab;
     public Sprite HeadSprite;
     public Sprite BodySprite;
-    public int PedeLength = 10;
+    public int PedeLength;
     public float CentiSpeed = 2f;
 
     public LayerMask CollisionMask;
@@ -23,17 +23,21 @@ public class Centipede : MonoBehaviour
     private bool NextLevel = false;
     public AudioSource soundSectionDestroyed;
     public Shake screenShake;
+    
     private void Start()
     {
+        PedeLength = GameManager.Instance.currPedeLength;
         Respawn();
     }
     private void FixedUpdate()
     {
-        if (GameManager.Instance.ReturnScore() > 0 && NextLevel == false)
+        if (sections.Count <= 0 && GameManager.Instance.ReturnScore() >= GameManager.Instance.GetRequiredScore() && NextLevel == false)
         {
             NextLevel = true;
             StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());
         }
+        if (sections.Count <= 0 && GameManager.Instance.ReturnScore() < GameManager.Instance.GetRequiredScore())
+            HudCanvas.GetComponent<HudController>().Lose();
     }
 
     public void Respawn()
@@ -105,9 +109,6 @@ public class Centipede : MonoBehaviour
         section.gameObject.GetComponent<Animator>().SetTrigger("Die");
         section.Dying = true;
         PedeLength--;
-
-        if (sections.Count <= 0)
-            HudCanvas.GetComponent<HudController>().Lose();
         soundSectionDestroyed.Play();
         StartCoroutine(screenShake.Shaking());
     }

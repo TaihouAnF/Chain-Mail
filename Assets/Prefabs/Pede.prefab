@@ -179,12 +179,11 @@ MonoBehaviour:
   SectionPrefab: {fileID: 7022579497525810285, guid: 556dee210cfa9e445b7672d2c0cad73a, type: 3}
   HeadSprite: {fileID: 21300000, guid: 26bdac5322e4b7647b9adad21d729686, type: 3}
   BodySprite: {fileID: 21300000, guid: 006c51e95aaa6f74eb0c4712137ff97c, type: 3}
-  PedeLength: 10
+  PedeLength: 25
   CentiSpeed: 5
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 65
-  HomeBound: {fileID: 0}
+    m_Bits: 321
   BarrierPrefab: {fileID: -4236088132779124694, guid: 52a39df2048ebd34fa4374c489e5cc30, type: 3}
-  soundSectionDestroyed: {fileID: 3907951104104615597}
+  soundSectionDestroyed: {fileID: 0}
   screenShake: {fileID: 0}
