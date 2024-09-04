@@ -83,7 +83,6 @@ public class Agent : MonoBehaviour
 
     public void DestroyAgent()
     {
-        Debug.Log("Killing Agents.");
         agentController.currentAgent = null;
         agentController.coolDown = agentController.spawnCoolDown;   // Reset Cooldown
         Destroy(gameObject);

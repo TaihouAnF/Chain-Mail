@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -46,7 +45,7 @@ public class HudController : MonoBehaviour
         LosePanel.SetActive(false);
         loadingNextLevel = true;
         yield return new WaitForSecondsRealtime(5);
-        GameManager.Instance.UpdateRequiredScore();
+        GameManager.Instance.ChangeLevel();
         NextLevelPanel.SetActive(false);
         SceneManager.LoadScene(1);
     }
@@ -56,7 +55,8 @@ public class HudController : MonoBehaviour
         if(GameObject.FindObjectOfType<Centipede>() != null)
         {
             PedeLenText.text = "Length: " + GameObject.FindObjectOfType<Centipede>().PedeLength.ToString();
-            scoreText.text = "Score: " + GameManager.Instance.ReturnScore().ToString();
+            scoreText.text = "Score: " + GameManager.Instance.ReturnScore().ToString() + "/" + 
+                              GameManager.Instance.GetRequiredScore().ToString();
         }
     }
     private void Update()

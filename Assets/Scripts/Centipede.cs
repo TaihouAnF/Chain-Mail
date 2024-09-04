@@ -14,7 +14,7 @@ public class Centipede : MonoBehaviour
     public CentipedeSection SectionPrefab;
     public Sprite HeadSprite;
     public Sprite BodySprite;
-    public int PedeLength = 10;
+    public int PedeLength;
     public float CentiSpeed = 2f;
 
     public LayerMask CollisionMask;
@@ -23,8 +23,10 @@ public class Centipede : MonoBehaviour
     private bool NextLevel = false;
     public AudioSource soundSectionDestroyed;
     public Shake screenShake;
+    
     private void Start()
     {
+        PedeLength = GameManager.Instance.currPedeLength;
         Respawn();
     }
     private void FixedUpdate()

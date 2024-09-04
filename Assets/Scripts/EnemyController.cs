@@ -10,18 +10,28 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy Attribute")]
     public float BootTime = 3.0f;
     public float Speed = 5.0f;
+    public float CoolDown;
     public float ShootCoolDown = 2.0f;
 
     [Header("Reference")]
     public Centipede centipede;
     private CentipedeSection targetSection;
     public AudioSource soundShoot;
+    public GameManager gameManager;
 
     private void Awake() 
     { 
         rb = GetComponent<Rigidbody2D>();
         targetSection = null;
         centipede.OnTargetDestroy += OnTargetClear;
+    }
+
+    void Start() 
+    {
+        BootTime = GameManager.Instance.currEnemyBootTime;
+        Speed = GameManager.Instance.currEnemySpeed;
+        CoolDown = GameManager.Instance.currEnemyCdTime;
+        ShootCoolDown = CoolDown;
     }
 
     // Update is called once per frame
@@ -96,7 +106,7 @@ public class EnemyController : MonoBehaviour
         if (ShootCoolDown <= 0) 
         {
             Attack();
-            ShootCoolDown = 2.0f;
+            ShootCoolDown = CoolDown;
         }
         else 
         {
