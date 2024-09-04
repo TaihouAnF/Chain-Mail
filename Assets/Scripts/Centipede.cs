@@ -34,6 +34,8 @@ public class Centipede : MonoBehaviour
             NextLevel = true;
             StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());
         }
+        if (sections.Count <= 0 && GameManager.Instance.ReturnScore() < GameManager.Instance.GetRequiredScore())
+            HudCanvas.GetComponent<HudController>().Lose();
     }
 
     public void Respawn()
@@ -105,9 +107,6 @@ public class Centipede : MonoBehaviour
         section.gameObject.GetComponent<Animator>().SetTrigger("Die");
         section.Dying = true;
         PedeLength--;
-
-        if (sections.Count <= 0)
-            HudCanvas.GetComponent<HudController>().Lose();
         soundSectionDestroyed.Play();
         StartCoroutine(screenShake.Shaking());
     }
