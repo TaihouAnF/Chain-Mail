@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start() {
@@ -32,10 +36,5 @@ public class GameManager : MonoBehaviour
 
     public void UpdateRequiredScore() {
         baseScoreRequi *= 2;
-    }
-
-    private void OnDestroy() 
-    {
-        Instance = null;
     }
 }

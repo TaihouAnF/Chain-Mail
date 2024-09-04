@@ -49,7 +49,6 @@ public class HudController : MonoBehaviour
         GameManager.Instance.UpdateRequiredScore();
         NextLevelPanel.SetActive(false);
         SceneManager.LoadScene(1);
-
     }
 
     private void FixedUpdate()
