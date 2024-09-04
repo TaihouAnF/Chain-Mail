@@ -30,6 +30,7 @@ public class CentipedeSection : MonoBehaviour
     private Directions dir = Directions.right;
     private Vector2 targetPos;
     public AudioSource soundSuccess;
+    public bool Dying = false;
 
     private void Awake()
     {
@@ -40,30 +41,34 @@ public class CentipedeSection : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-            dir = Directions.up;
-        else if(Input.GetKey(KeyCode.D))
-            dir = Directions.right;
-        else if (Input.GetKey(KeyCode.S))
-            dir = Directions.down;
-        else if (Input.GetKey(KeyCode.A))
-            dir = Directions.left;
-        if (IsHead && Vector2.Distance(transform.position, targetPos) < 0.1f) 
+        if (!Dying)
         {
-            UpdateHeadSection();
+            if (Input.GetKey(KeyCode.W))
+                dir = Directions.up;
+            else if(Input.GetKey(KeyCode.D))
+                dir = Directions.right;
+            else if (Input.GetKey(KeyCode.S))
+                dir = Directions.down;
+            else if (Input.GetKey(KeyCode.A))
+                dir = Directions.left;
+            if (IsHead && Vector2.Distance(transform.position, targetPos) < 0.1f) 
+            {
+                UpdateHeadSection();
+            }
+
+            Vector2 currentPos = transform.position;
+            float speed = Centipede.CentiSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(currentPos, targetPos, speed);
+
+            Vector2 moveDirection = (targetPos - currentPos).normalized;
+            float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
+            transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+            //soundSuccess.Play();
         }
-
-        Vector2 currentPos = transform.position;
-        float speed = Centipede.CentiSpeed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(currentPos, targetPos, speed);
-
-        Vector2 moveDirection = (targetPos - currentPos).normalized;
-        float angle = Mathf.Atan2(moveDirection.x, moveDirection.y);
-        transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
-        //soundSuccess.Play();
     }
     public void UpdateHeadSection()
     {
+        //SRenderer.sprite = HeadSprite;
         Vector2 gridPos = GridPosition(transform.position);
 
         targetPos = gridPos;
@@ -131,13 +136,13 @@ public class CentipedeSection : MonoBehaviour
             //collision.enabled = false;
             
             this.Centipede.RemoveSectionAndSpawn(this);
-            if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-            {
-                //collision.enabled = false;
-                //xxx;
-                this.Centipede.RemoveSectionAndSpawn(this);
-                Destroy(collision.gameObject);
-            }
+
+        }
+        else if (collision.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            //collision.enabled = false;
+            this.Centipede.RemoveSectionAndSpawn(this);
+            collision.gameObject.GetComponent<Barrier>().Damage(1);
         }
         else if (collision.enabled && IsHead && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))   // Hitting the enemy with a head
         {
@@ -164,5 +169,9 @@ public class CentipedeSection : MonoBehaviour
         }
         return score;
 
+    }
+    public void DestroyAfterAnim()
+    {
+        Destroy(this);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 596362121742776694}
   - component: {fileID: 3373402051533328852}
   - component: {fileID: -4236088132779124694}
+  - component: {fileID: 4437291600842815490}
   m_Layer: 8
   m_Name: Barrier
   m_TagString: Untagged
@@ -145,3 +146,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprites:
   - {fileID: 21300000, guid: 68b30623c24cd044380a07c3878c9f18, type: 3}
+  soundBarrierDestroyed: {fileID: 0}
+--- !u!95 &4437291600842815490
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730918243798141970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8eae05bbab83f1c43ba25678c1fb38c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

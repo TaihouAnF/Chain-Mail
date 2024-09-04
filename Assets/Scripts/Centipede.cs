@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 using Random = UnityEngine.Random;
 public class Centipede : MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class Centipede : MonoBehaviour
                 section.SRenderer.sprite = BodySprite;
             section.Centipede = this;
             sections.Add(section);
+
+            section.gameObject.GetComponent<Animator>().SetBool("Head", section.Ahead == null);
         }
 
         for (int i = 0; i < sections.Count; i++) 
@@ -79,6 +82,7 @@ public class Centipede : MonoBehaviour
         {
             section.Behind.Ahead = null;
             section.Behind.SRenderer.sprite = HeadSprite;
+            section.Behind.GetComponent<Animator>().SetBool("Head", section.Ahead == null);
             section.Behind.UpdateHeadSection();
         }
 
@@ -98,13 +102,15 @@ public class Centipede : MonoBehaviour
             section.isLockedOn = false;
 
         }
-        Destroy(section.gameObject);
+        section.gameObject.GetComponent<Collider2D>().enabled = false;
+        section.gameObject.GetComponent<Animator>().SetTrigger("Die");
+        section.Dying = true;
+
         if (sections.Count <= 0)
             HudCanvas.GetComponent<HudController>().Lose();
         soundSectionDestroyed.Play();
         StartCoroutine(screenShake.Shaking());
     }
-
     private CentipedeSection GetSectionAt(int index)
     {
         if(index >= 0 && index < sections.Count)

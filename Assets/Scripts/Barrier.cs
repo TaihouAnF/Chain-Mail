@@ -15,7 +15,7 @@ public class Barrier : MonoBehaviour
         hp = Sprites.Length;
     }
 
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
         hp -= damage;
         if(hp > 0)
@@ -25,8 +25,14 @@ public class Barrier : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<Collider2D>().enabled = false;  
+            gameObject.GetComponent<Animator>().SetTrigger("Die");
         }
+    }
+
+    public void DestroyAfterAnim()
+    {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
