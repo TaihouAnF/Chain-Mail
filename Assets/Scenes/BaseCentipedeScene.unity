@@ -1074,6 +1074,10 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 728480520984388507}
+    - target: {fileID: 7732124876406759051, guid: a735aec9bc8626b43b65fa179b2fe45c, type: 3}
+      propertyPath: baseScoreRequi
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -761,6 +761,7 @@ MonoBehaviour:
   NextLevelPanel: {fileID: 6951933413439204989}
   LoadingSlider: {fileID: 4795881713949471640}
   PedeLenText: {fileID: 6575145379571757496}
+  scoreText: {fileID: 2086859628713142645}
   startScreen: 0
 --- !u!1 &2319354951878630304
 GameObject:
