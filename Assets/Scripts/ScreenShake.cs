@@ -7,6 +7,7 @@ public class Shake : MonoBehaviour
     public bool start = false;
     public AnimationCurve curve;
     public float duration = 1f;
+    public Animator BeepBoopAnimator;
 
     public void Update()
     {
@@ -20,7 +21,7 @@ public class Shake : MonoBehaviour
     {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
-
+        BeepBoopAnimator.SetTrigger("Damage");
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;

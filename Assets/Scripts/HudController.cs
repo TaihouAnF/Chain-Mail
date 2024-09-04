@@ -12,6 +12,7 @@ public class HudController : MonoBehaviour
     public GameObject LosePanel;
     public GameObject NextLevelPanel;
     public Slider LoadingSlider;
+    public TextMeshProUGUI PedeLenText;
 
     public bool startScreen = false;
     private bool loadingNextLevel = false;
@@ -55,6 +56,8 @@ public class HudController : MonoBehaviour
             LosePanel.SetActive(false);
             NextLevelPanel.SetActive(true);
         }
+        if(GameObject.FindObjectOfType<Centipede>() != null)
+            PedeLenText.text = "Length: " + GameObject.FindObjectOfType<Centipede>().PedeLength.ToString();
         if (loadingNextLevel)
             LoadingSlider.value = LoadingSlider.value + (Time.deltaTime / 3);
     }

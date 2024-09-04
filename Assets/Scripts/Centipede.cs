@@ -18,7 +18,6 @@ public class Centipede : MonoBehaviour
     public float CentiSpeed = 2f;
 
     public LayerMask CollisionMask;
-    public BoxCollider2D HomeBound;
     public Barrier BarrierPrefab;
     public event Action OnTargetDestroy;
     private bool NextLevel = false;
@@ -105,6 +104,7 @@ public class Centipede : MonoBehaviour
         section.gameObject.GetComponent<Collider2D>().enabled = false;
         section.gameObject.GetComponent<Animator>().SetTrigger("Die");
         section.Dying = true;
+        PedeLength--;
 
         if (sections.Count <= 0)
             HudCanvas.GetComponent<HudController>().Lose();

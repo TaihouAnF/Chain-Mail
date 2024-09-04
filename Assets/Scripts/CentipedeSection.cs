@@ -29,6 +29,7 @@ public class CentipedeSection : MonoBehaviour
     private Vector2 direction = Vector2.right + Vector2.down;
     private Directions dir = Directions.right;
     private Vector2 targetPos;
+
     public AudioSource soundSuccess;
     public bool Dying = false;
 
@@ -72,7 +73,16 @@ public class CentipedeSection : MonoBehaviour
         Vector2 gridPos = GridPosition(transform.position);
 
         targetPos = gridPos;
-        if(dir == Directions.up)
+        if (targetPos.y >= 17.6)
+            targetPos.y = 17;
+        if (targetPos.y <= -18.6)
+            targetPos.y = -18;
+        if (targetPos.x >= 17.6)
+            targetPos.x = 17;
+        if (targetPos.x <= -17.6)
+            targetPos.x = -17;
+
+        if (dir == Directions.up)
             targetPos.y += Vector2.up.y;
         else if (dir == Directions.right)
             targetPos.x += Vector2.right.x;
