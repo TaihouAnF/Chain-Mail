@@ -39,7 +39,10 @@ public class Centipede : MonoBehaviour
             StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());
         }
         if (sections.Count <= 0 && GameManager.Instance.ReturnScore() < GameManager.Instance.GetRequiredScore())
+        {
+            
             HudCanvas.GetComponent<HudController>().Lose();
+        }
     }
 
     public void Respawn()

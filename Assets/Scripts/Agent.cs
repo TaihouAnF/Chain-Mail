@@ -16,6 +16,7 @@ public class Agent : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private SpriteRenderer spriteRenderer;
+    public AudioSource soundFBIAgent;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Agent : MonoBehaviour
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;
+        soundFBIAgent.Play();
     }
 
     void Start() 
