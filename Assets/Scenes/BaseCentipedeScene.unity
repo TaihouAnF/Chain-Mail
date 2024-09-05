@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: centipede
       value: 
       objectReference: {fileID: 816894054}
+    - target: {fileID: 88856153565129159, guid: 184218f8de5cb3342979295c7166e093, type: 3}
+      propertyPath: agentAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2905359465628320143, guid: 184218f8de5cb3342979295c7166e093, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70.55773

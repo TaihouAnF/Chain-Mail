@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float currEnemyBootTime = baseEnemyBootTime;
     public const float baseEnemyCdTime = 2.0f;
     public float currEnemyCdTime = baseEnemyCdTime;
+    public const int baseAgentAmt = 1;
+    public int agentAmt = 1;
 
 
     private void Awake() {
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 4:
                 scoreRequire += 10;
+                agentAmt += 1;
                 // Could make two agents.
                 break;
             default:    // reset them back
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour
                 currEnemySpeed = baseEnemySpeed;
                 currEnemyBootTime = baseEnemyBootTime;
                 currEnemyCdTime = baseEnemyCdTime;
+                agentAmt = baseAgentAmt;
                 break;
         }
     }
