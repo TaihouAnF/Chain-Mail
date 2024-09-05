@@ -23,7 +23,8 @@ public class Centipede : MonoBehaviour
     private bool NextLevel = false;
     public AudioSource soundSectionDestroyed;
     public Shake screenShake;
-    
+
+
     private void Start()
     {
         PedeLength = GameManager.Instance.currPedeLength;
@@ -37,7 +38,10 @@ public class Centipede : MonoBehaviour
             StartCoroutine(HudCanvas.GetComponent<HudController>().NextLevel());
         }
         if (sections.Count <= 0 && GameManager.Instance.ReturnScore() < GameManager.Instance.GetRequiredScore())
+        {
+            
             HudCanvas.GetComponent<HudController>().Lose();
+        }
     }
 
     public void Respawn()

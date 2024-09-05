@@ -20,11 +20,12 @@ public class Barrier : MonoBehaviour
         hp -= damage;
         if(hp > 0)
         {
-            soundBarrierDestroyed.Play();
+            
             sRenderer.sprite = Sprites[hp - 1];
         }
         else
         {
+            soundBarrierDestroyed.Play();
             gameObject.GetComponent<Collider2D>().enabled = false;  
             gameObject.GetComponent<Animator>().SetTrigger("Die");
         }

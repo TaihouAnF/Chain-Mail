@@ -13,9 +13,11 @@ public class HudController : MonoBehaviour
     public Slider LoadingSlider;
     public TextMeshProUGUI PedeLenText;
     public TextMeshProUGUI scoreText;
+    public AudioSource soundLose;
 
     public bool startScreen = false;
     private bool loadingNextLevel = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class HudController : MonoBehaviour
     {
         LosePanel.SetActive(true);
         FinalScoreText.text = GameManager.Instance.ReturnScore().ToString();
+        soundLose.Play();
     }
     public IEnumerator NextLevel()
     {
