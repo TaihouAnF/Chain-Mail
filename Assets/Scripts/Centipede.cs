@@ -23,6 +23,8 @@ public class Centipede : MonoBehaviour
     private bool NextLevel = false;
     public AudioSource soundSectionDestroyed;
     public Shake screenShake;
+
+    public FixedJoystick joystick;
     
     private void Start()
     {

@@ -44,13 +44,13 @@ public class CentipedeSection : MonoBehaviour
     {
         if (!Dying)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Centipede.joystick.Vertical > 0.05)
                 dir = Directions.up;
-            else if(Input.GetKey(KeyCode.D))
+            else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Centipede.joystick.Horizontal > 0.05)
                 dir = Directions.right;
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || Centipede.joystick.Vertical < -0.05)
                 dir = Directions.down;
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Centipede.joystick.Horizontal < -0.05)
                 dir = Directions.left;
             if (IsHead && Vector2.Distance(transform.position, targetPos) < 0.1f) 
             {
