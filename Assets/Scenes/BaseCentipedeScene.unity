@@ -306,6 +306,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b80aeb9f928b274d9f4ad09de479d8b, type: 3}
+--- !u!114 &521390261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7732124876406759051, guid: a735aec9bc8626b43b65fa179b2fe45c, type: 3}
+  m_PrefabInstance: {fileID: 2328932333201516523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3669b57bd5bf834f9e1284260d84450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &677686523 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1825378681146016920, guid: 68ecb6b5e6694b4469a8b4c53ad51d63, type: 3}
@@ -646,6 +657,10 @@ PrefabInstance:
       propertyPath: HudCanvas
       value: 
       objectReference: {fileID: 279758638}
+    - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 521390261}
     - target: {fileID: 7820834756600427477, guid: 19703e0feec8b3c4e92936f98c47a747, type: 3}
       propertyPath: screenShake
       value: 

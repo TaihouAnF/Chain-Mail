@@ -346,6 +346,8 @@ MonoBehaviour:
   LosePanel: {fileID: 1051835907}
   NextLevelPanel: {fileID: 219925226}
   LoadingSlider: {fileID: 0}
+  PedeLenText: {fileID: 0}
+  scoreText: {fileID: 0}
   startScreen: 1
 --- !u!212 &627267103
 SpriteRenderer:
@@ -1356,7 +1358,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.13527231, g: 0.5283019, b: 0.002491996, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7753079, g: 1, b: 0.6622641, a: 0.23137255}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

@@ -98,6 +98,6 @@ public class Agent : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         col.enabled = false;
-        DestroyAgent();
+        gameObject.GetComponent<Animator>().SetTrigger("Die");
     }
 }

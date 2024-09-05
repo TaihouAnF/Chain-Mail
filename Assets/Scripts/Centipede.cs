@@ -55,13 +55,17 @@ public class Centipede : MonoBehaviour
             CentipedeSection section = Instantiate(SectionPrefab, pos, Quaternion.identity);
 
             if(i == 0)
+            {
+                section.gameObject.GetComponent<Animator>().SetBool("Head", true);
                 section.SRenderer.sprite = HeadSprite;
+            }
             else
+            {
+                section.gameObject.GetComponent<Animator>().SetBool("Head", false);
                 section.SRenderer.sprite = BodySprite;
+            }
             section.Centipede = this;
             sections.Add(section);
-
-            section.gameObject.GetComponent<Animator>().SetBool("Head", section.Ahead == null);
         }
 
         for (int i = 0; i < sections.Count; i++) 
@@ -85,8 +89,8 @@ public class Centipede : MonoBehaviour
         {
             section.Behind.Ahead = null;
             section.Behind.SRenderer.sprite = HeadSprite;
-            section.Behind.GetComponent<Animator>().SetBool("Head", section.Ahead == null);
             section.Behind.UpdateHeadSection();
+            section.Behind.GetComponent<Animator>().SetBool("Head", true);
         }
 
         RemoveSection(section);
@@ -105,8 +109,8 @@ public class Centipede : MonoBehaviour
             section.isLockedOn = false;
 
         }
+        section.GetComponent<Animator>().SetTrigger("Die");
         section.gameObject.GetComponent<Collider2D>().enabled = false;
-        section.gameObject.GetComponent<Animator>().SetTrigger("Die");
         section.Dying = true;
         PedeLength--;
         soundSectionDestroyed.Play();

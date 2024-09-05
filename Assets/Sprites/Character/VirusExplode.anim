@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1928033293, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
+      value: {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
     - time: 0.05
       value: {fileID: -2120789131, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - time: 0.083333336
@@ -68,6 +68,10 @@ AnimationClip:
       value: {fileID: -1475474924, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - time: 1.0833334
       value: {fileID: -1475474924, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
+    - time: 1.2333333
+      value: {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
+    - time: 1.9833333
+      value: {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -90,7 +94,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1928033293, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
+    - {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
     - {fileID: -2120789131, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - {fileID: -762880266, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - {fileID: 2069624102, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
@@ -114,12 +118,14 @@ AnimationClip:
     - {fileID: 152015844, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - {fileID: -1475474924, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
     - {fileID: -1475474924, guid: 0c8c72a98c4fb5249a92685c4bc251c8, type: 3}
+    - {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
+    - {fileID: 742114094, guid: de327065b8a20d648a6b53c894cc898c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -139,7 +145,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1
+  - time: 1.3666667
     functionName: DestroyAfterAnim
     data: 
     objectReferenceParameter: {fileID: 0}

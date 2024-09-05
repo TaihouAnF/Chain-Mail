@@ -176,12 +176,13 @@ public class CentipedeSection : MonoBehaviour
             CentipedeSection sec_prev = sec;
             sec = sec.Behind;
             Centipede.RemoveSection(sec_prev);
+            sec_prev.GetComponent<Animator>().SetTrigger("Die");
         }
         return score;
 
     }
     public void DestroyAfterAnim()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
