@@ -20,9 +20,9 @@ Try to get your longest chain mail to the bank account to earn the most points p
 ## Authors
 
 - Cleveland Parker - Production & Sound - Email: [u1097165@utah.edu](mailto:u1097165@utah.edu)
-- Youyou Sun - Production - Email: []()
+- Yoyo Sun - Production - Email: [u1306807@utah.edu](mailto:u1306807@utah.edu)
 - Sky Wess - Engineer - Email: [Smwess5682@outlook.com](mailto:Smwess5682@outlook.com)
 - Anson Feng - Engineer - Email: [u1529790@utah.edu](mailto:u1529790@utah.edu)
-- Yukun Fang - Technical Artist - Email:[]()
-- Jesse Zhang - Technical Artist - Email:[]()
-- Ziteng Zhao - Artist - Email:[]()
+- Yukun Fang - Technical Artist - Email:[teaskyd@gmail.com](mailto:teaskyd@gmail.com)
+- Jesse Zhang - Technical Artist - Email:[u1536639@umail.utah.edu](mailto:u1536639@umail.utah.edu)
+- Ziteng Zhao - Artist - Email:[u1339284@utah.edu](mailto:u1339284@utah.edu)
