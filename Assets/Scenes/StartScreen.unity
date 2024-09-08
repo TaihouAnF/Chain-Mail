@@ -348,6 +348,7 @@ MonoBehaviour:
   LoadingSlider: {fileID: 0}
   PedeLenText: {fileID: 0}
   scoreText: {fileID: 0}
+  soundLose: {fileID: 0}
   startScreen: 1
 --- !u!212 &627267103
 SpriteRenderer:

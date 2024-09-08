@@ -17,6 +17,7 @@ public class HudController : MonoBehaviour
 
     public bool startScreen = false;
     private bool loadingNextLevel = false;
+    private bool loginScreen = false;
 
 
     // Start is called before the first frame update
@@ -33,13 +34,13 @@ public class HudController : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void Lose()
     {
         LosePanel.SetActive(true);
-        FinalScoreText.text = GameManager.Instance.ReturnScore().ToString();
+        FinalScoreText.text = "Final Score: " + GameManager.Instance.ReturnScore().ToString();
         soundLose.Play();
     }
     public IEnumerator NextLevel()
@@ -61,16 +62,19 @@ public class HudController : MonoBehaviour
             scoreText.text = "Score: " + GameManager.Instance.ReturnScore().ToString() + "/" + 
                               GameManager.Instance.GetRequiredScore().ToString();
         }
-    }
-    private void Update()
-    {
         if (Input.anyKeyDown && startScreen)
         {
+            if (loginScreen)
+                StartGame();
             LosePanel.SetActive(false);
             NextLevelPanel.SetActive(true);
+            loginScreen = true;
         }
         if (loadingNextLevel)
             LoadingSlider.value = LoadingSlider.value + (Time.deltaTime / 3);
+    }
+    private void Update()
+    {
     }
 
     public void StartGame()

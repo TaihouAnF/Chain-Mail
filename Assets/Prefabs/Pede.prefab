@@ -187,3 +187,5 @@ MonoBehaviour:
   BarrierPrefab: {fileID: -4236088132779124694, guid: 52a39df2048ebd34fa4374c489e5cc30, type: 3}
   soundSectionDestroyed: {fileID: 0}
   screenShake: {fileID: 0}
+  VFX: {fileID: 1004883747423341990, guid: f068358d954a4554282733a048f7cab7, type: 3}
+  joystick: {fileID: 0}

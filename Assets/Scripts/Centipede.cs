@@ -23,6 +23,7 @@ public class Centipede : MonoBehaviour
     private bool NextLevel = false;
     public AudioSource soundSectionDestroyed;
     public Shake screenShake;
+    public GameObject VFX;
 
     public FixedJoystick joystick;
     
@@ -114,6 +115,7 @@ public class Centipede : MonoBehaviour
             section.isLockedOn = false;
 
         }
+        Instantiate(VFX, section.transform);
         section.GetComponent<Animator>().SetTrigger("Die");
         section.gameObject.GetComponent<Collider2D>().enabled = false;
         section.Dying = true;
