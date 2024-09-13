@@ -29,6 +29,7 @@ public class SpawnBarriers : MonoBehaviour
 
             Instantiate(B, pos, Quaternion.identity, transform);
         }
+        
     }
     // Update is called once per frame
     void Update()
